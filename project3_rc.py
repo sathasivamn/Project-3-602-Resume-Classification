@@ -1,15 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Install Python libraries
-!pip install python-docx
-!pip install PyPDF2
-!pip install textract
-!pip install joblib scikit-learn matplotlib pandas
-
-# Required for textract to read .doc files
-!apt-get update -y
-!apt-get install -y antiword unrtf poppler-utils tesseract-ocr libreoffice
-
 from google.colab import drive
 drive.mount('/content/drive')
 
@@ -28,8 +18,6 @@ with zipfile.ZipFile(ZIP_NAME, 'r') as zip_ref:
 
 DATA_PATH = "/content/data"
 
-!apt-get update -y
-!apt-get install -y libreoffice
 
 import os
 
@@ -67,7 +55,7 @@ def read_pdf(path):
 
 # Optional: run this if you don't already have nltk stopwords/tokenizers
 # (Run this in a terminal / notebook cell)
-!pip install nltk
+
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -99,8 +87,7 @@ else:
 # 3. Convert .doc → .docx using LibreOffice
 
 # Install if not already installed
-!apt-get update -y
-!apt-get install -y libreoffice
+
 
 base = Path(EXTRACT_DIR)
 
@@ -313,12 +300,5 @@ joblib.dump(best_pipe, pickle_filename)
 
 print(f"The best model ('{best_model_name}') has been saved to '{pickle_filename}'")
 
-import joblib
-!pip install joblib
-!pip install streamlit
 
-!streamlit run app.py
-
-import docx
-print("python-docx installed successfully!")
 
